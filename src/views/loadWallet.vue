@@ -14,7 +14,7 @@
             >
               <option
                 v-for="(wallet, index) in wallets"
-                :key="wallet[index].address"
+                :key="index"
               >
                 {{ wallet[0] }}</option
               >
