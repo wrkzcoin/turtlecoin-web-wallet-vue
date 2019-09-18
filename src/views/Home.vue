@@ -1,17 +1,18 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <b-button @click="clickMe">Click Me</b-button>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
 
 @Component({
-  components: {
-    HelloWorld
+  components: {},
+  methods: {
+    clickMe() {
+      this.$buefy.notification.open("Clicked!!");
+    }
   }
 })
 export default class Home extends Vue {}

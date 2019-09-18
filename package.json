@@ -10,9 +10,15 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "buefy": "^0.8.0",
+    "cleave.js": "^1.5.3",
     "core-js": "^2.6.5",
+    "jdenticon": "^2.2.0",
+    "fexra/turtlecoin-wallet-backend": "^3.4.9",
+    "vee-validate": "^3.0.3",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
+    "vue-clipboard2": "^0.3.1",
     "vue-property-decorator": "^8.1.0",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
@@ -33,9 +39,13 @@
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^4.9.0",
+    "preload-webpack-plugin": "^2.3.0",
     "prettier": "^1.18.2",
+    "sass-loader": "^7.0.1",
     "ts-jest": "^23.0.0",
     "typescript": "^3.4.3",
+    "vue-cli-plugin-buefy": "^0.3.7",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
