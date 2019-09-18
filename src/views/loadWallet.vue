@@ -60,11 +60,16 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { ValidationObserver } from "vee-validate";
+import BInputWithValidation from "../components/inputs/BInputWithValidation.vue";
 
 const wallets = Object.entries({ ...localStorage });
 
 @Component({
-  components: {},
+  components: {
+    ValidationObserver,
+    BInputWithValidation
+  },
   data: function() {
     return {
       wallets: wallets,
