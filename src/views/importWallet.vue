@@ -51,6 +51,21 @@
           </b-field>
         </section>
 
+        <section v-if="showSeed">
+          <b-field>
+            <BTaginputWithValidation
+              rules="required"
+              v-model="seed"
+              name="seed"
+              type="is-primary"
+              size="is-large"
+              allow-duplicates
+              v-bind:on-paste-separators="[' ']"
+            />
+          </b-field>
+        </section>
+
+
           <b-button
             native-type="submit"
             value="submit"
@@ -68,7 +83,9 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { ValidationObserver } from "vee-validate";
+
 import BInputWithValidation from "../components/inputs/BInputWithValidation.vue";
+import BTaginputWithValidation from "../components/inputs/BTaginputWithValidation.vue";
 
 
 const methods = [{ index: 1, name: "Keys", icon: "key" }, { index: 2, name: "Seed", icon: "fingerprint" }, { index: 3, name: "JSON", icon: "code" }, { index: 4, name: "Encrypted String", icon: "https" }, { index: 5, name: "File", icon: "download" }, ]
@@ -78,6 +95,7 @@ const methods = [{ index: 1, name: "Keys", icon: "key" }, { index: 2, name: "See
   components: {
     ValidationObserver,
     BInputWithValidation,
+    BTaginputWithValidation
   },
   data: function() {
     return {
@@ -97,6 +115,37 @@ const methods = [{ index: 1, name: "Keys", icon: "key" }, { index: 2, name: "See
     onSelect(i) {
       if(i === 1) {
         this.$data.showKeys = true;
+        this.$data.showSeed = false;
+        this.$data.showJSON = false;
+        this.$data.showEncrypted = false;
+        this.$data.showFile = false;
+      } else if(i === 2){
+        this.$data.showKeys = false;
+        this.$data.showSeed = true;
+        this.$data.showJSON = false;
+        this.$data.showEncrypted = false;
+        this.$data.showFile = false;
+      }
+      else if(i === 3){
+        this.$data.showKeys = false;
+        this.$data.showSeed = false;
+        this.$data.showJSON = true;
+        this.$data.showEncrypted = false;
+        this.$data.showFile = false;
+      }
+      else if(i === 4){
+        this.$data.showKeys = false;
+        this.$data.showSeed = false;
+        this.$data.showJSON = false;
+        this.$data.showEncrypted = true;
+        this.$data.showFile = false;
+      }
+      else if(i === 5){
+        this.$data.showKeys = false;
+        this.$data.showSeed = false;
+        this.$data.showJSON = false;
+        this.$data.showEncrypted = false;
+        this.$data.showFile = true;
       }
     },
     onSubmit(e) {
