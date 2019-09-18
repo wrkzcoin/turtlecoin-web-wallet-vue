@@ -32,7 +32,6 @@ const daemon: IDaemon = new Daemon("blockapi.turtlepay.io", 443);
     if (sessionStorage.length <= 0) {
       this.$router.push("/load");
     } else {
-
       // Grab encrypted wallet string based on session load
       const encryptedString = JSON.parse(
         localStorage.getItem(sessionStorage.getItem("wallet") || "") || ""
@@ -47,8 +46,7 @@ const daemon: IDaemon = new Daemon("blockapi.turtlepay.io", 443);
 
       if (error) {
         console.log("Failed to load wallet: " + error.toString());
-      } else if(wallet) {
-
+      } else if (wallet) {
         await wallet.start();
 
         console.log(wallet);

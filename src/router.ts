@@ -10,12 +10,14 @@ export default new Router({
     {
       path: "/",
       name: "home",
-      component: () => import(/* webpackChunkName: "home" */ "./views/viewWallet.vue")
+      component: () =>
+        import(/* webpackChunkName: "home" */ "./views/viewWallet.vue")
     },
     {
       path: "/load",
       name: "load",
-      component: () => import(/* webpackChunkName: "f" */ "./views/loadWallet.vue")
+      component: () =>
+        import(/* webpackChunkName: "f" */ "./views/loadWallet.vue")
     },
     {
       path: "/create",

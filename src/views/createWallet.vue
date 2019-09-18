@@ -222,13 +222,7 @@ if (mnemonics) {
   },
 
   methods: {
-    onStep: function(s) {
-      console.log(s);
-      //Autofocus on name input if step = 1
-      if (s === 1) {
-      } else if (s === 3) {
-      }
-    },
+    onStep: function(s) {},
     onCopy: function(e) {
       this.$buefy.toast.open({
         message: "Copied to Clipboard",

@@ -7,9 +7,6 @@
         :is-full-page="isFullPage"
         :active.sync="isLoading"
       ></b-loading>
-      
-      <br />
-       <br />
       <router-view />
     </div>
   </div>

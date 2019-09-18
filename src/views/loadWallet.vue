@@ -3,12 +3,7 @@
     <div class="columns is-mobile">
       <div class="column is-three-fifths is-offset-one-fifth">
         <img src="@/assets/img/swanson/Searching.png" />
-
-
-        <br />
-        <br />
-
-        <form @submit.prevent="onSubmit" class="form">
+        <form @submit.prevent="onSubmit" class="form" style="margin-top:20px;">
           <b-field>
             <b-select
               name="wallet"

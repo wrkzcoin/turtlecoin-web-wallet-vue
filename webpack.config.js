@@ -4,13 +4,12 @@ const VueLoaderPlugin = require("vue-loader/lib/plugin");
 module.exports = {
   mode: "development",
   entry: {
-    entry: ['babel-polyfill', './src/main.ts'],
-
+    entry: ["babel-polyfill", "./src/main.ts"]
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/turtlecoin-web-wallet-vue/',
-    filename: 'build.js'
+    path: path.resolve(__dirname, "./dist"),
+    publicPath: "/turtlecoin-web-wallet-vue/",
+    filename: "build.js"
   },
   module: {
     rules: [
