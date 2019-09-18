@@ -4,8 +4,13 @@ const VueLoaderPlugin = require("vue-loader/lib/plugin");
 module.exports = {
   mode: "development",
   entry: {
-    index:
-      "./node_modules/turtlecoin-utils/lib/turtlecoin-crypto/turtlecoin-crypto.js"
+    entry: ['babel-polyfill', './src/main.ts'],
+
+  },
+  output: {
+    path: path.resolve(__dirname, './dist'),
+    publicPath: '/turtlecoin-web-wallet-vue/',
+    filename: 'app.js'
   },
   module: {
     rules: [
