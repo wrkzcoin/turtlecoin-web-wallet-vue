@@ -10,7 +10,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/turtlecoin-web-wallet-vue/',
-    filename: 'app.js'
+    filename: 'build.js'
   },
   module: {
     rules: [

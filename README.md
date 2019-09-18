@@ -1,4 +1,6 @@
 # turtlecoin-web-wallet-vue
+[![Build Status](https://travis-ci.org/turtlecoin/turtlecoin-web-wallet-vue.svg?branch=master)](https://travis-ci.org/turtlecoin/turtlecoin-web-wallet-vue)
+
 A serverless TurtleCoin  client side web wallet that can be deployed to Github, Gitlab, Netlify and Heroku to name a few. Utilizes [turtlecoin-wallet-backend-js](https://github.com/turtlecoin/turtlecoin-wallet-backend-js) and the power of Vue and Buefy.
 
 ![Load Wallet](https://i.imgur.com/5P5Wizt.png)
