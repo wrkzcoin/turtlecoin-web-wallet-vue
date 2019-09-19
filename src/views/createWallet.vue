@@ -6,7 +6,7 @@
           <form @submit.prevent="onSubmit" class="form">
             <b-steps v-on:change="onStep">
               <b-step-item label="Generate" icon="gesture">
-                <p class="is-size-3">Create New Wallet</p>
+                
                 <p class="is-size-5">Each address is randomly generated</p>
 
                 <div v-html="avatar"></div>
@@ -32,7 +32,7 @@
               </b-step-item>
 
               <b-step-item label="Secure" icon="lock">
-                <p class="is-size-3">Create New Wallet</p>
+                
                 <p class="is-size-5">
                   Account will be stored locally on your device
                 </p>
@@ -87,7 +87,7 @@
               </b-step-item>
 
               <b-step-item label="Backup" icon="fingerprint">
-                <p class="is-size-3">Create New Wallet</p>
+                
                 <p class="is-size-5">
                   Please carefully write down this backup phrase
                 </p>
@@ -122,7 +122,7 @@
               </b-step-item>
 
               <b-step-item label="Verify" icon="check">
-                <p class="is-size-3">Create New Wallet</p>
+                
                 <p class="is-size-5">
                   Please verify your backup phrase rewriting it here.
                 </p>
