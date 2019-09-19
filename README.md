@@ -1,24 +1,24 @@
 # turtlecoin-web-wallet-vue
 [![Build Status](https://travis-ci.org/turtlecoin/turtlecoin-web-wallet-vue.svg?branch=master)](https://travis-ci.org/turtlecoin/turtlecoin-web-wallet-vue)
 
-A serverless TurtleCoin  client side web wallet that can be deployed to Github, Gitlab, Netlify and Heroku to name a few. Utilizes [turtlecoin-wallet-backend-js](https://github.com/turtlecoin/turtlecoin-wallet-backend-js) and the power of Vue and Buefy.
+A serverless TurtleCoin  client side web wallet that can be deployed to Github, Gitlab, Netlify and Heroku to name a few. Utilizes [turtlecoin-wallet-backend-js](https://github.com/turtlecoin/turtlecoin-wallet-backend-js) and the power of Vue, TypeScript and Buefy.
 
-![Load Wallet](https://i.imgur.com/5P5Wizt.png)
+![Create Wallet](https://i.imgur.com/De41Me1.png)
 
 
 ## Working
-- Generate Wallet
+- Create Wallet
 - Store Wallet
-- Load Wallet
+- Open Wallet
+- Import View
 
 ## To-Do
-- Load WASM library in Webpack
+- Load TurtleCoin-Utils WASM library in Webpack and Build
 - Display incoming / outgoing transactions
-- Display Syncing status (footer bar in app)
-- Change remote node (footer bar in app)
-- Export / Import wallet
-- Conditional Logout in Navigation when a wallet is Loaded
-- Better way to store password in the sessionStorage - encrypt?
+- Display Syncing status (right corner in footer)
+- Change Remote Node functionality
+- Export / Import wallet functionality
+- Better way to store password in the sessionStorage -- look alternatives eg: cookies/encryping session/?
 
 ## Project setup
 ```

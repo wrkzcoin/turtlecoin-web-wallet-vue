@@ -1,5 +1,5 @@
 <template>
-  <div class="load">
+  <div class="open" style="margin-top: 20px;">
     <div class="columns is-mobile">
       <div class="column is-three-fifths is-offset-one-fifth">
         <img src="@/assets/img/swanson/Searching.png" />
@@ -89,5 +89,5 @@ const wallets = Object.entries({ ...localStorage });
     }
   }
 })
-export default class Load extends Vue {}
+export default class Open extends Vue {}
 </script>

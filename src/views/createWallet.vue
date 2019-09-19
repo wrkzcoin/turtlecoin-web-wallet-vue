@@ -1,20 +1,19 @@
 <template>
-  <div class="create">
+  <div class="create" style="margin-top: 20px;">
     <div class="columns is-mobile">
       <div class="column is-three-fifths is-offset-one-fifth">
         <ValidationObserver v-slot="{ invalid, passes }">
           <form @submit.prevent="onSubmit" class="form">
-            <b-steps v-on:change="onStep">
+            <b-steps v-on:change="onStep" size="is-medium">
               <b-step-item label="Generate" icon="gesture">
-                
                 <p class="is-size-5">Each address is randomly generated</p>
 
-                <div v-html="avatar"></div>
+                <div v-html="avatar" style="margin: 20px 0 20px 0"></div>
 
                 <section>
                   <b-field position="is-centered">
                     <b-input size="is-large" v-model="address"> </b-input>
-                    <p class="control">
+                    <b-tooltip label="Copy" position="is-right">
                       <b-button type="is-primary" size="is-large">
                         <b-icon
                           icon="clipboard"
@@ -26,15 +25,14 @@
                         >
                         </b-icon>
                       </b-button>
-                    </p>
+                    </b-tooltip>
                   </b-field>
                 </section>
               </b-step-item>
 
               <b-step-item label="Secure" icon="lock">
-                
                 <p class="is-size-5">
-                  Account will be stored locally on your device
+                  Wallet will be stored locally on your device
                 </p>
 
                 <br />
@@ -87,7 +85,6 @@
               </b-step-item>
 
               <b-step-item label="Backup" icon="fingerprint">
-                
                 <p class="is-size-5">
                   Please carefully write down this backup phrase
                 </p>
@@ -122,9 +119,8 @@
               </b-step-item>
 
               <b-step-item label="Verify" icon="check">
-                
                 <p class="is-size-5">
-                  Please verify your backup phrase rewriting it here.
+                  Please verify your backup phrase rewriting it here
                 </p>
 
                 <br />
@@ -151,7 +147,7 @@
                     @click="openLoading"
                     native-type="submit"
                     value="submit"
-                    type="is-dark is-outlined is-fullwidth"
+                    type="is-dark is-fullwidth"
                     size="is-large"
                     :disabled="invalid"
                     >Confirm</b-button
@@ -194,12 +190,6 @@ if (mnemonics) {
 }
 
 @Component({
-  props: {
-    isLoading: {
-      type: String,
-      required: true
-    }
-  },
   components: {
     ValidationObserver,
     BInputWithValidation,
@@ -207,8 +197,6 @@ if (mnemonics) {
   },
   data: function() {
     return {
-      isLoading: true,
-      isFullPage: true,
       address: address,
       avatar: avatar,
       name: null,

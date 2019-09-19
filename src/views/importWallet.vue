@@ -1,5 +1,5 @@
 <template>
-  <div class="import">
+  <div class="import" style="margin-top: 20px;">
     <div class="columns is-mobile">
       <div class="column is-three-fifths is-offset-one-fifth">
         <img src="@/assets/img/swanson/Computing.png" />

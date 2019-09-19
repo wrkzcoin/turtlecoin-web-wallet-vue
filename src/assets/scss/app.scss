@@ -40,6 +40,8 @@ $addColors: (
   "success": ($success, $success-invert),
   "warning": ($warning, $warning-invert),
   "danger": ($danger, $danger-invert),
+  "purple": ($purple, $purple-invert),
+
 );
 
 $colors: map-merge($colors, $addColors);

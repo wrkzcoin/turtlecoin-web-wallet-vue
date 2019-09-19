@@ -14,10 +14,10 @@ export default new Router({
         import(/* webpackChunkName: "home" */ "./views/viewWallet.vue")
     },
     {
-      path: "/load",
-      name: "load",
+      path: "/open",
+      name: "open",
       component: () =>
-        import(/* webpackChunkName: "f" */ "./views/loadWallet.vue")
+        import(/* webpackChunkName: "f" */ "./views/openWallet.vue")
     },
     {
       path: "/create",

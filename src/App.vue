@@ -1,7 +1,8 @@
 <template>
   <div id="app">
+    <Navigation></Navigation>
+
     <div class="container">
-      <Navigation></Navigation>
       <b-loading
         ref="loading"
         :is-full-page="isFullPage"
@@ -9,16 +10,19 @@
       ></b-loading>
       <router-view />
     </div>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 export default {
   name: "app",
   components: {
-    Navigation
+    Navigation,
+    Footer
   },
   data() {
     return {

@@ -1,5 +1,5 @@
 <template>
-  <div class="Home">
+  <div class="view" style="margin-top: 20px;">
     <div class="columns is-mobile">
       <div class="column is-three-fifths is-offset-one-fifth">
         <b-field label="Message">
@@ -56,5 +56,5 @@ const daemon: IDaemon = new Daemon("blockapi.turtlepay.io", 443);
     }
   }
 })
-export default class Home extends Vue {}
+export default class View extends Vue {}
 </script>

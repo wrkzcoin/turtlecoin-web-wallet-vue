@@ -1,5 +1,5 @@
 <template>
-  <b-navbar height="100px">
+  <b-navbar type="is-light" wrapper-class="container">
     <template slot="brand">
       <b-navbar-item href="/">
         <img src="@/assets/img/logo.png" width="auto" height="50" />
@@ -10,8 +10,8 @@
     <template slot="end">
       <b-navbar-item tag="div">
         <div class="buttons">
-          <a class="button is-primary" href="load">
-            Load
+          <a class="button is-primary" href="Open">
+            Open
           </a>
           <a class="button is-primary" href="create">
             Create
