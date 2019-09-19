@@ -219,7 +219,7 @@ if (mnemonics) {
       });
     },
     openLoading() {},
-    onSubmit(e) {
+    onSubmit() {
       //store wallet in localStorage
       localStorage.setItem(
         this.name,
