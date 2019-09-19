@@ -3,7 +3,7 @@
 
 A serverless TurtleCoin  client side web wallet that can be deployed to Github, Gitlab, Netlify and Heroku to name a few. Utilizes [turtlecoin-wallet-backend-js](https://github.com/turtlecoin/turtlecoin-wallet-backend-js) and the power of Vue, TypeScript and Buefy.
 
-![Create Wallet](https://i.imgur.com/De41Me1.png)
+![Create Wallet](https://i.imgur.com/zf3owd8.png)
 
 
 ## Working
