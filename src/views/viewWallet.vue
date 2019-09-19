@@ -28,9 +28,9 @@ const daemon: IDaemon = new Daemon("blockapi.turtlepay.io", 443);
     onSubmit(e) {}
   },
   async created() {
-    //Redirect to Load
+    //Redirect to Open
     if (sessionStorage.length <= 0) {
-      this.$router.push("/load");
+      this.$router.push("/open");
     } else {
       // Grab encrypted wallet string based on session load
       const encryptedString = JSON.parse(
