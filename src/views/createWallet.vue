@@ -39,13 +39,10 @@
                 <section>
                   <b-field position="is-centered">
                     <BInputWithValidation
-                      persist
-                      rules="required"
-                      type="text"
-                      vid="name"
                       v-model="name"
                       name="name"
-                      ref="name"
+                      rules="required"
+                      type="text"
                       size="is-large"
                       icon="wallet"
                       placeholder="Name"
@@ -54,12 +51,11 @@
 
                   <b-field position="is-centered">
                     <BInputWithValidation
-                      persist
+                      v-model="password"
+                      name="password"
                       rules="required"
                       type="password"
                       vid="password"
-                      v-model="password"
-                      name="password"
                       size="is-large"
                       icon="key"
                       placeholder="Password"
@@ -69,12 +65,11 @@
 
                   <b-field position="is-centered">
                     <BInputWithValidation
-                      persist
-                      rules="required|confirmed:password"
-                      type="password"
                       vid="repeat"
                       v-model="repeat"
                       name="repeat"
+                      rules="required|confirmed:password"
+                      type="password"
                       size="is-large"
                       icon="repeat"
                       placeholder="Confirm"
@@ -227,10 +222,10 @@ if (mnemonics) {
     onSubmit(e) {
       //store wallet in localStorage
       localStorage.setItem(
-        e.target.elements.name.value,
+        this.name,
         JSON.stringify({
           address: address,
-          data: wallet.encryptWalletToString(e.target.elements.password.value)
+          data: wallet.encryptWalletToString(this.password)
         })
       );
 

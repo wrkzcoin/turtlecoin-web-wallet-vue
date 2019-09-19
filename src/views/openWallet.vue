@@ -6,6 +6,7 @@
         <form @submit.prevent="onSubmit" class="form" style="margin-top:20px;">
           <b-field>
             <b-select
+              v-model="wallet"
               name="wallet"
               placeholder="Select a wallet"
               size="is-large"
@@ -60,7 +61,6 @@ import { Component, Vue } from "vue-property-decorator";
 import { ValidationObserver } from "vee-validate";
 import BInputWithValidation from "../components/inputs/BInputWithValidation.vue";
 
-const wallets = Object.entries({ ...localStorage });
 
 @Component({
   components: {
@@ -69,7 +69,8 @@ const wallets = Object.entries({ ...localStorage });
   },
   data: function() {
     return {
-      wallets: wallets,
+      wallet: [],
+      wallets: [],
       password: null
     };
   },
@@ -83,6 +84,17 @@ const wallets = Object.entries({ ...localStorage });
     }
   },
   created() {
+    this.wallets = Object.entries({ ...localStorage }).filter(wallet => {
+      try {
+          const storageData = JSON.parse(wallet[1])
+          if(storageData.hasOwnProperty('address')) {
+            return wallet
+          }
+      } catch (e) {
+          // ignore as it's probably not the data we need
+      }
+    })
+
     //Redirect to app
     if (sessionStorage.length >= 1) {
       this.$router.push("/");
