@@ -10,7 +10,7 @@
     <template slot="end">
       <b-navbar-item tag="div">
         <div class="buttons">
-          <a class="button is-primary" href="Open">
+          <a class="button is-primary" href="open">
             Open
           </a>
           <a class="button is-primary" href="create">
