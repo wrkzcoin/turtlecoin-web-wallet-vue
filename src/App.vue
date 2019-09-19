@@ -2,11 +2,17 @@
   <div id="app">
     <div class="container">
       <Navigation></Navigation>
-      <b-loading ref="loading" :is-full-page="isFullPage" :active.sync="isLoading"></b-loading>
+      <b-loading
+        ref="loading"
+        :is-full-page="isFullPage"
+        :active.sync="isLoading"
+      ></b-loading>
+      
+      <br />
+       <br />
       <router-view />
     </div>
   </div>
-
 </template>
 
 <script>
@@ -17,20 +23,16 @@ export default {
   components: {
     Navigation
   },
-   data() {
+  data() {
     return {
       isLoading: false,
       isFullPage: true
-    }
+    };
   },
-  methods: {
-
-  },
-  mounted() {
-  }
+  methods: {},
+  mounted() {}
 };
 </script>
-
 
 <style>
 #app {

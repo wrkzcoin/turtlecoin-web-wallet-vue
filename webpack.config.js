@@ -4,7 +4,8 @@ const VueLoaderPlugin = require("vue-loader/lib/plugin");
 module.exports = {
   mode: "development",
   entry: {
-    index: './node_modules/turtlecoin-utils/lib/turtlecoin-crypto/turtlecoin-crypto.js'
+    index:
+      "./node_modules/turtlecoin-utils/lib/turtlecoin-crypto/turtlecoin-crypto.js"
   },
   module: {
     rules: [
@@ -27,7 +28,7 @@ module.exports = {
 
       {
         test: /\.exec\.js$/,
-        use: [ 'script-loader' ]
+        use: ["script-loader"]
       }
     ]
   },
@@ -38,7 +39,6 @@ module.exports = {
     new PreloadWebpackPlugin({
       rel: "preload",
       as: "script"
-    }),
-
+    })
   ]
 };

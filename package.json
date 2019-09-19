@@ -1,6 +1,6 @@
 {
-  "name": "tww",
-  "version": "0.1.0",
+  "name": "turtlecoin-web-wallet-vue",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -14,7 +14,7 @@
     "cleave.js": "^1.5.3",
     "core-js": "^2.6.5",
     "jdenticon": "^2.2.0",
-    "fexra/turtlecoin-wallet-backend": "^3.4.9",
+    "turtlecoin-wallet-backend": "^4.0.2",
     "vee-validate": "^3.0.3",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",

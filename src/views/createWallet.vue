@@ -1,6 +1,5 @@
 <template>
   <div class="create">
-
     <div class="columns is-mobile">
       <div class="column is-three-fifths is-offset-one-fifth">
         <ValidationObserver v-slot="{ invalid, passes }">
@@ -96,20 +95,19 @@
                 <br />
 
                 <section>
-  
-                    <BTaginputWithValidation
-                      persist
-                      v-model="mnemonics"
-                      ref="mnemonics"
-                      name="mnemonics"
-                      vid="mnemonics"
-                      type="is-primary"
-                      size="is-large"
-                      allow-duplicates
-                      :closable=false
-                      readonly
-                    />
-                    <br />
+                  <BTaginputWithValidation
+                    persist
+                    v-model="mnemonics"
+                    ref="mnemonics"
+                    name="mnemonics"
+                    vid="mnemonics"
+                    type="is-primary"
+                    size="is-large"
+                    allow-duplicates
+                    :closable="false"
+                    readonly
+                  />
+                  <br />
 
                   <b-button
                     type="is-dark is-fullwidth is-outlined"
@@ -133,7 +131,6 @@
 
                 <section>
                   <b-field>
-
                     <BTaginputWithValidation
                       autofocus
                       persist
@@ -146,10 +143,9 @@
                       allow-duplicates
                       v-bind:on-paste-separators="[',']"
                     />
-        
                   </b-field>
 
-                    <br />
+                  <br />
 
                   <b-button
                     @click="openLoading"
@@ -173,15 +169,14 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { ValidationObserver } from "vee-validate";
+import jdenticon from "jdenticon";
+
 import BInputWithValidation from "../components/inputs/BInputWithValidation.vue";
 import BTaginputWithValidation from "../components/inputs/BTaginputWithValidation.vue";
 
-//Connect to Wallet
+//Connect to network
 import { WalletBackend, Daemon, IDaemon } from "turtlecoin-wallet-backend";
-import jdenticon from "jdenticon";
-
 const daemon: IDaemon = new Daemon("blockapi.turtlepay.io", 443);
-
 const wallet: WalletBackend = WalletBackend.createWallet(daemon);
 
 // Get address
@@ -191,19 +186,19 @@ const address = wallet.getPrimaryAddress();
 const avatar = jdenticon.toSvg(address, 300);
 
 // Get Mnenomics
-let mnemonicsArray: any
-const [mnemonics, mnemonicsError] = wallet.getMnemonicSeed()
+let mnemonicsArray: any;
+const [mnemonics, mnemonicsError] = wallet.getMnemonicSeed();
 
-if(mnemonics) {
-  mnemonicsArray= mnemonics.trim().split(" ")
+if (mnemonics) {
+  mnemonicsArray = mnemonics.trim().split(" ");
 }
 
 @Component({
   props: {
-   isLoading: {
-    type: String,
-    required: true
-   }
+    isLoading: {
+      type: String,
+      required: true
+    }
   },
   components: {
     ValidationObserver,
@@ -228,12 +223,10 @@ if(mnemonics) {
 
   methods: {
     onStep: function(s) {
-      console.log(s)
+      console.log(s);
       //Autofocus on name input if step = 1
-      if(s === 1) {
-  
-      } else if(s === 3) {
-
+      if (s === 1) {
+      } else if (s === 3) {
       }
     },
     onCopy: function(e) {
@@ -248,34 +241,21 @@ if(mnemonics) {
         type: "is-danger"
       });
     },
-    openLoading() {
-      
-    },
+    openLoading() {},
     onSubmit(e) {
+      //store wallet in localStorage
+      localStorage.setItem(
+        e.target.elements.name.value,
+        JSON.stringify({
+          address: address,
+          data: wallet.encryptWalletToString(e.target.elements.password.value)
+        })
+      );
 
-      const name = e.target.elements.name.value
-      const data = wallet.encryptWalletToString(e.target.elements.password.value);
-
-      console.log(data)
-       
-      // create wallet object store
-      const store = JSON.stringify({
-        name: name,
-        address: address,
-        data: data
-      });
-
-      console.log(store)
-
-      localStorage.setItem(name, store);
-
-      console.log("stored");
-      this.$router.push("/login");
+      this.$router.push("/load");
     }
   },
-  watch: {
-    
-  }
+  watch: {}
 })
 export default class createWallet extends Vue {}
 </script>

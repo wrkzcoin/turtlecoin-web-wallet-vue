@@ -15,4 +15,3 @@ extend("seed", {
   ...confirmed,
   message: "The backup phrase does not match"
 });
-

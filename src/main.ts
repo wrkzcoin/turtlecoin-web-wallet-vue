@@ -5,7 +5,6 @@ import store from "./store";
 import Buefy from "buefy";
 import "./assets/scss/app.scss";
 import "./vee-validate";
-
 import VueClipboard from "vue-clipboard2";
 
 Vue.use(Buefy);
