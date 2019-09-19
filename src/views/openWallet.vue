@@ -13,7 +13,7 @@
               icon="wallet"
               expanded
             >
-              <option v-for="(wallet, index) in getWallets" :key="index">
+              <option v-for="(wallet, index) in wallets" :key="index">
                 {{ wallet.name }}</option
               >
             </b-select>
@@ -69,15 +69,14 @@ import { mapGetters, mapActions } from 'vuex'
   },
   data: function() {
     return {
-      wallet: [],
-      wallets: [],
+      wallet: '',
       password: null
     };
   },
   computed: {
-    ...mapGetters([
-      'getWallets'
-    ])
+    ...mapGetters({
+      wallets: 'getWallets'
+    })
   },
   methods: {
     ...mapActions([
