@@ -18,7 +18,6 @@ A serverless TurtleCoin  client side web wallet that can be deployed to Github, 
 - Display Syncing status (right corner in footer)
 - Change Remote Node functionality
 - Export / Import wallet functionality
-- Better way to store password in the sessionStorage -- look alternatives eg: cookies/encryping session/?
 
 ## Project setup
 ```
