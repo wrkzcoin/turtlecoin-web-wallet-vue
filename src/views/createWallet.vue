@@ -161,6 +161,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import { ValidationObserver } from "vee-validate";
 import jdenticon from "jdenticon";
+import { mapActions } from 'vuex'
 
 import BInputWithValidation from "../components/inputs/BInputWithValidation.vue";
 import BTaginputWithValidation from "../components/inputs/BTaginputWithValidation.vue";
@@ -205,6 +206,9 @@ if (mnemonics) {
   },
 
   methods: {
+    ...mapActions([
+      'addWallet'
+    ]),
     onStep: function(s) {},
     onCopy: function(e) {
       this.$buefy.toast.open({
@@ -220,16 +224,23 @@ if (mnemonics) {
     },
     openLoading() {},
     onSubmit() {
-      //store wallet in localStorage
-      localStorage.setItem(
-        this.name,
-        JSON.stringify({
-          address: address,
-          data: wallet.encryptWalletToString(this.password)
-        })
-      );
+      // store wallet in vuex
+      this.addWallet({
+        name: this.name,
+        address: address,
+        walletString: JSON.parse(wallet.encryptWalletToString(this.password))
+      })
 
-      this.$router.push("/load");
+      //store wallet in localStorage
+      // localStorage.setItem(
+      //   this.name,
+      //   JSON.stringify({
+      //     address: address,
+      //     data: wallet.encryptWalletToString(this.password)
+      //   })
+      // );
+
+      this.$router.push("/open");
     }
   },
   watch: {}

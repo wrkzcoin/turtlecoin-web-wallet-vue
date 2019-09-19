@@ -13,8 +13,8 @@
               icon="wallet"
               expanded
             >
-              <option v-for="(wallet, index) in wallets" :key="index">
-                {{ wallet[0] }}</option
+              <option v-for="(wallet, index) in getWallets" :key="index">
+                {{ wallet.name }}</option
               >
             </b-select>
           </b-field>
@@ -60,7 +60,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import { ValidationObserver } from "vee-validate";
 import BInputWithValidation from "../components/inputs/BInputWithValidation.vue";
-
+import { mapGetters, mapActions } from 'vuex'
 
 @Component({
   components: {
@@ -74,31 +74,46 @@ import BInputWithValidation from "../components/inputs/BInputWithValidation.vue"
       password: null
     };
   },
+  computed: {
+    ...mapGetters([
+      'getWallets'
+    ])
+  },
   methods: {
-    onSubmit(e) {
+    ...mapActions([
+      'setWallet'
+    ]),
+    onSubmit() {
+      // load the wallet by setting the wallet prop in our vuex store
+      this.setWallet({
+        wallet: this.wallet,
+        password: this.password
+      })
+
       //set open wallet in localSession
-      sessionStorage.setItem("wallet", e.target.elements.password.value);
-      sessionStorage.setItem("password", e.target.elements.wallet.value);
+      // sessionStorage.setItem("wallet", e.target.elements.password.value);
+      // sessionStorage.setItem("password", e.target.elements.wallet.value);
 
       this.$router.push("/");
     }
   },
   created() {
-    this.wallets = Object.entries({ ...localStorage }).filter(wallet => {
-      try {
-          const storageData = JSON.parse(wallet[1])
-          if(storageData.hasOwnProperty('address')) {
-            return wallet
-          }
-      } catch (e) {
-          // ignore as it's probably not the data we need
-      }
-    })
+    // we don't need this anymore because we are storing in vuex
+    // this.wallets = Object.entries({ ...localStorage }).filter(wallet => {
+    //   try {
+    //       const storageData = JSON.parse(wallet[1])
+    //       if(storageData.hasOwnProperty('address')) {
+    //         return wallet
+    //       }
+    //   } catch (e) {
+    //       // ignore as it's probably not the data we need
+    //   }
+    // })
 
     //Redirect to app
-    if (sessionStorage.length >= 1) {
-      this.$router.push("/");
-    }
+    // if (sessionStorage.length >= 1) {
+    //   this.$router.push("/");
+    // }
   }
 })
 export default class Open extends Vue {}
