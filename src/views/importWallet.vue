@@ -25,7 +25,7 @@
 
           <section v-if="showFile">
             <b-field>
-              <b-upload v-model="dropFiles" drag-drop>
+              <b-upload v-model="walletFile" drag-drop>
                 <section class="section">
                   <div class="content has-text-centered">
                     <p>
