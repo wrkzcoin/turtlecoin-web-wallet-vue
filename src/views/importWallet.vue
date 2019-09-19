@@ -2,8 +2,8 @@
   <div class="import">
     <div class="columns is-mobile">
       <div class="column is-three-fifths is-offset-one-fifth">
-       <form @submit.prevent="onSubmit" class="form" style="margin-top:20px;">
-
+        <img src="@/assets/img/swanson/Computing.png" />
+        <form @submit.prevent="onSubmit" class="form" style="margin-top:20px;">
           <b-field>
             <b-select
               v-on:input="onSelect"
@@ -23,48 +23,64 @@
             </b-select>
           </b-field>
 
-        <section v-if="showKeys">
-          <b-field position="is-centered">
-            <BInputWithValidation
-              rules="required|regex: /^(TRTL)/|max:64"
-              type="text"
-              v-model="privateViewKey"
-              name="privateViewKey"
-              ref="privateViewKey"
-              size="is-large"
-              icon="key"
-              placeholder="Private View Key"
-            />
-          </b-field>
+          <section v-if="showFile">
+            <b-field>
+              <b-upload v-model="dropFiles" drag-drop>
+                <section class="section">
+                  <div class="content has-text-centered">
+                    <p>
+                      <b-icon icon="upload" size="is-large"> </b-icon>
+                    </p>
+                    <p>Drop your wallet here or click to upload</p>
+                  </div>
+                </section>
+              </b-upload>
+            </b-field>
+          </section>
 
-          <b-field position="is-centered">
-            <BInputWithValidation
-              rules="required|regex: /^(TRTL)/|max:64"
-              type="text"
-              v-model="privateSpendKey"
-              name="privateSpendKey"
-              ref="privateSpendKey"
-              size="is-large"
-              icon="key"
-              placeholder="Private Spend Key"
-            />
-          </b-field>
-        </section>
+          <section v-if="showSeed">
+            <b-field>
+              <BTaginputWithValidation
+                rules="required"
+                v-model="seedPhrase"
+                name="seedPhrase"
+                type="is-primary"
+                size="is-large"
+                allow-duplicates
+                v-bind:on-paste-separators="[' ']"
+              />
+            </b-field>
+          </section>
 
-        <section v-if="showSeed">
-          <b-field>
-            <BTaginputWithValidation
-              rules="required"
-              v-model="seed"
-              name="seed"
-              type="is-primary"
-              size="is-large"
-              allow-duplicates
-              v-bind:on-paste-separators="[' ']"
-            />
-          </b-field>
-        </section>
+          <section v-if="showKeys">
+            <b-field position="is-centered">
+              <BInputWithValidation
+                rules="required|regex: /^(TRTL)/|max:64"
+                type="text"
+                v-model="privateViewKey"
+                name="privateViewKey"
+                ref="privateViewKey"
+                size="is-large"
+                icon="key"
+                placeholder="Private View Key"
+              />
+            </b-field>
 
+            <b-field position="is-centered">
+              <BInputWithValidation
+                rules="required|regex: /^(TRTL)/|max:64"
+                type="text"
+                v-model="privateSpendKey"
+                name="privateSpendKey"
+                ref="privateSpendKey"
+                size="is-large"
+                icon="lock"
+                placeholder="Private Spend Key"
+              />
+            </b-field>
+          </section>
+
+          <br />
 
           <b-button
             native-type="submit"
@@ -73,10 +89,9 @@
             size="is-large"
             >Import</b-button
           >
-    
         </form>
-     </div>
       </div>
+    </div>
   </div>
 </template>
 
@@ -87,9 +102,11 @@ import { ValidationObserver } from "vee-validate";
 import BInputWithValidation from "../components/inputs/BInputWithValidation.vue";
 import BTaginputWithValidation from "../components/inputs/BTaginputWithValidation.vue";
 
-
-const methods = [{ index: 1, name: "Keys", icon: "key" }, { index: 2, name: "Seed", icon: "fingerprint" }, { index: 3, name: "JSON", icon: "code" }, { index: 4, name: "Encrypted String", icon: "https" }, { index: 5, name: "File", icon: "download" }, ]
-
+const methods = [
+  { index: 1, name: "File", icon: "download" },
+  { index: 2, name: "Seed", icon: "fingerprint" },
+  { index: 3, name: "Keys", icon: "key" }
+];
 
 @Component({
   components: {
@@ -101,55 +118,33 @@ const methods = [{ index: 1, name: "Keys", icon: "key" }, { index: 2, name: "See
     return {
       methods: methods,
       password: null,
-      showKeys: false,
-      showSeed: false,
-      showJSON: false,
-      showEncrypted: false,
       showFile: false,
+      showSeed: false,
+      showKeys: false,
+      walletFile: null,
+      seedPhrase: null,
       privateViewKey: null,
-      privateSpendKey: null,
-
+      privateSpendKey: null
     };
   },
   methods: {
     onSelect(i) {
-      if(i === 1) {
-        this.$data.showKeys = true;
-        this.$data.showSeed = false;
-        this.$data.showJSON = false;
-        this.$data.showEncrypted = false;
-        this.$data.showFile = false;
-      } else if(i === 2){
-        this.$data.showKeys = false;
-        this.$data.showSeed = true;
-        this.$data.showJSON = false;
-        this.$data.showEncrypted = false;
-        this.$data.showFile = false;
-      }
-      else if(i === 3){
-        this.$data.showKeys = false;
-        this.$data.showSeed = false;
-        this.$data.showJSON = true;
-        this.$data.showEncrypted = false;
-        this.$data.showFile = false;
-      }
-      else if(i === 4){
-        this.$data.showKeys = false;
-        this.$data.showSeed = false;
-        this.$data.showJSON = false;
-        this.$data.showEncrypted = true;
-        this.$data.showFile = false;
-      }
-      else if(i === 5){
-        this.$data.showKeys = false;
-        this.$data.showSeed = false;
-        this.$data.showJSON = false;
-        this.$data.showEncrypted = false;
+      if (i === 1) {
         this.$data.showFile = true;
+        this.$data.showSeed = false;
+        this.$data.showKeys = false;
+      } else if (i === 2) {
+        this.$data.showFile = false;
+        this.$data.showSeed = true;
+        this.$data.showKeys = false;
+      } else if (i === 3) {
+        this.$data.showFile = false;
+        this.$data.showSeed = false;
+        this.$data.showKeys = true;
       }
     },
     onSubmit(e) {
-      console.log(e.target.elements.methods.value)
+      console.log(e.target.elements.methods.value);
     }
   }
 })

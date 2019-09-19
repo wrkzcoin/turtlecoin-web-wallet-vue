@@ -12,10 +12,7 @@
               icon="wallet"
               expanded
             >
-              <option
-                v-for="(wallet, index) in wallets"
-                :key="index"
-              >
+              <option v-for="(wallet, index) in wallets" :key="index">
                 {{ wallet[0] }}</option
               >
             </b-select>
